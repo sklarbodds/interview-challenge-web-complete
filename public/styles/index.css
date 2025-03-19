@@ -1,0 +1,223 @@
+/* CSS RESET borrowed from https://www.joshwcomeau.com/css/custom-css-reset/ */
+/* I always want to do a CSS reset because it makes it so much easier and more consistent to style things */
+/* 1. Reset box-sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* 2. Remove default margins */
+* {
+    margin: 0;
+}
+
+body {
+    /* 3. Add accessible line-height */
+    line-height: 1.5;
+    /* 4. Improve text rendering */
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 5. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: contents;
+}
+
+/* 8. Improve line wrapping */
+p {
+    text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-wrap: balance;
+}
+
+/*
+    9. Create a root stacking context
+  */
+#root,
+#__next {
+    isolation: isolate;
+}
+
+/***************** END CSS RESET ********************/
+:root {
+    --font: "Graphik Web", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --alt-font: "Times New Roman";
+}
+
+html * {
+    font-family: var(--font);
+}
+
+div.content-container {
+    padding: 8rem;
+}
+
+div.header {
+    border-bottom: 15px solid #efb15e;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 50vh;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+    & h1 {
+        font-family: var(--alt-font);
+        flex-basis: 100%;
+        cursor: pointer;
+    }
+
+    & [data-font-style="0"] { font-family: var(--font);}
+    & [data-font-style="1"] { font-family: var(--alt-font);}
+
+    & div.video-series,
+    div.youtube-container {
+        display: flex;
+        align-items: center;
+    }
+}
+
+div.youtube-container {
+    animation: show 2000ms 500ms cubic-bezier(0.38, 0.97, 0.56, 0.76) forwards;
+    opacity: 0;
+    flex-grow: 1;
+    width: 40%;
+    min-height: 200px;
+    min-width: 300px;
+
+    & div.video-error {
+        padding: 20px;
+        background-color: #f44336;
+        color: white;
+    }
+}
+
+div.youtube-iframe-container {
+    display: flex;
+    border: 1px solid black;
+    flex-grow: 1;
+
+    width: 100%;
+    height: auto;
+
+    & iframe {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+}
+
+div.video-series {
+    max-width: 40rem;
+    height: 35vh;
+    min-height: 200px;
+    min-width: 200px;
+
+    & h2 {
+        font-size: 3.5rem;
+    }
+
+    & hr {
+        border: 1px solid black;
+        width: 4rem;
+        margin: 1rem 0;
+    }
+}
+
+div.video-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    align-items: flex-start;
+    animation: show 2000ms 500ms cubic-bezier(0.38, 0.97, 0.56, 0.76) forwards;
+    opacity: 0;
+
+
+    & .video-card {
+        width: 310px;
+        min-height: 300px;
+        cursor: pointer;
+
+        & .image-box {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 200px;
+            margin-bottom: .5em;
+        }
+
+        & .video-description {
+            display: -webkit-box;
+            max-width: 310px;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            opacity: .6;
+            font-size: small;
+
+        }
+
+        & .video-time {
+            padding: .75em 0;
+            font-size: smaller;
+
+            & .video-icon {
+                float: right;
+            }
+        }
+
+        & div.new-video-tag {
+            position: absolute;
+            text-transform: uppercase;
+            border-radius: 5px;
+            padding: 2px 5px;
+            background-color: azure;
+            border: 1px solid black;
+            font-weight: 700;
+            font-size: smaller;
+            margin: 10px;
+            color: #333;
+        }
+    }
+}
+
+
+@keyframes show {
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
