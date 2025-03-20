@@ -4,7 +4,7 @@ import { GenericProps } from "../utils/GenericProps";
 
 export const VideoContext = React.createContext<IVideoContext>({
     videoCategory: {} as IVideoCategory,
-    displayVideo: (video: IVideo) => {},
+    displayVideo: (_video: IVideo) => {},
     resetVideo: () => {},
     displayErrorVideo: () => {},
  } as IVideoContext);

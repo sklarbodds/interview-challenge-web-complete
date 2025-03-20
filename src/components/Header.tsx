@@ -45,7 +45,7 @@ export const Header = (): JSX.Element => {
                 <div className="youtube-container">
                     {currentVideo.youtubeId
                         ? < div className="youtube-iframe-container">
-                            <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${currentVideo.youtubeId}?&autoplay=1&mute=1`} frameborder="0" allowfullscreen></iframe>
+                            <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${currentVideo.youtubeId}?&autoplay=1&mute=1`} frameBorder="0" allowFullScreen></iframe>
                         </div>
                         : <div className="video-error">We're sorry, something went wrong when loading this video</div>
 
